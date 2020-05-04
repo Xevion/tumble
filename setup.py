@@ -13,14 +13,15 @@ with open(path.join(base, 'README.md'), encoding='utf-8') as f:
     readme = f.read()
 
 setup(
-    name='tumble',  # Required
-    version='0.0.1',  # Required
+    name='tumble',
+    version='0.0.1',
     description='A CLI-based Tumblr media scraper',
     long_description=readme,
     long_description_content_type='text/markdown',
     url='https://github.com/Xevion/tumble',
     author='Xevion',
     author_email='xevion@xevion.dev',
+    license="License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
@@ -29,17 +30,17 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     keywords='tumblr scraper media downloading downloader scraping cli commandline',
-    package_dir={'': 'tumble'},
-    packages=find_packages(where='tumble'),  # Required
+    # package_dir={'': 'tumble'},
+    packages=find_packages(),
+    include_package_data=True,
     python_requires='>3.5, <4',
     install_requires=['docopt'],
     extras_require={
     },
-    entry_points={
-        'tumble': [
-            'tumble=tumble.cli:main',
-        ],
-    },
+    entry_points="""
+    [console_scripts]
+    tumble=tumble.cli:main
+    """,
     project_urls={
         'Bug Reports': 'https://github.com/Xevion/tumble/issues',
         'Source': 'https://github.com/Xevionn/tumble/',
